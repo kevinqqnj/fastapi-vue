@@ -4,4 +4,4 @@ node_modules/
 env/
 __pycache__
 services/frontend/node_modules
-
+.idea
