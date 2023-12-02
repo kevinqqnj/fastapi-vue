@@ -3,5 +3,5 @@ node_modules/
 /dist/
 env/
 __pycache__
-services/frontend/node_modules
 .idea
+venv
