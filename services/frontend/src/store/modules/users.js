@@ -19,10 +19,11 @@ const actions = {
   },
   async logIn({dispatch}, user) {
     await axios.post('login', user);
-    await dispatch('viewMe');
+    {
+      await dispatch('viewMe'); }
   },
   async viewMe({commit}) {
-    let {data} = await axios.get('users/whoami');
+    let {data} = await axios.get('users/me');
     await commit('setUser', data);
   },
   // eslint-disable-next-line no-empty-pattern
@@ -30,8 +31,8 @@ const actions = {
     await axios.delete(`user/${id}`);
   },
   async logOut({commit}) {
-    let user = null;
-    commit('logout', user);
+  //  await axios.get('logout');
+    await commit('logout');
   }
 };
 
@@ -39,8 +40,8 @@ const mutations = {
   setUser(state, username) {
     state.user = username;
   },
-  logout(state, user){
-    state.user = user;
+  logout(state){
+    state.user = null;
   },
 };
 

@@ -34,5 +34,14 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
+  shell:
+    image: alpine
+    volumes:
+      - './shell:/root'
+    command: sh
+
+#    depends_on:
+#      - db
+
 volumes:
   postgres_data:

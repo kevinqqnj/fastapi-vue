@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const state = {
-  notes: null,
-  note: null
+  notes: {},
+  note: {author:{}}
 };
 
 const getters = {

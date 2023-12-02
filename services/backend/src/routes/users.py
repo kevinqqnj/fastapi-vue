@@ -54,12 +54,22 @@ async def login(user: OAuth2PasswordRequestForm = Depends()):
         samesite="Lax",
         secure=False,
     )
-
     return response
 
+@router.get(
+    "/logout", dependencies=[Depends(get_current_user)]
+)
+async def logout():
+    content = {"message": "logged out!"}
+    response = JSONResponse(content=content)
+    response.set_cookie(
+        "Authorization",
+        value="Bearer"
+    )
+    return response
 
 @router.get(
-    "/users/whoami", response_model=UserOutSchema, dependencies=[Depends(get_current_user)]
+    "/users/me", response_model=UserOutSchema, dependencies=[Depends(get_current_user)]
 )
 async def read_users_me(current_user: UserOutSchema = Depends(get_current_user)):
     return current_user
