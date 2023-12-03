@@ -1,6 +1,6 @@
 <template>
   <section>
-    <p>This site is built with FastAPI and Vue.</p>
+    <p>This site is built with FastAPI and Vue. (VS Code)</p>
 
     <div v-if="isLoggedIn" id="logout">
       <p id="logout">Click <router-link class="link" to="/dashboard">here</router-link> to view all notes.</p>

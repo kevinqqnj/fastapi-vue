@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from tortoise import Tortoise
 
@@ -20,7 +20,8 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080"],
+    allow_origins=["http://localhost:8080", "http://vm1:8080", "http://192.168.62.111:8080",\
+                   "http:/192.168.31.168:8080"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -32,5 +33,5 @@ register_tortoise(app, config=TORTOISE_ORM, generate_schemas=False)
 
 
 @app.get("/")
-def home():
+def home(request: Request):
     return "Hello, World!"

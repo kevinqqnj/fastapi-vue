@@ -31,7 +31,7 @@ const actions = {
     await axios.delete(`user/${id}`);
   },
   async logOut({commit}) {
-  //  await axios.get('logout');
+    await axios.get('logout');
     await commit('logout');
   }
 };
@@ -42,6 +42,7 @@ const mutations = {
   },
   logout(state){
     state.user = null;
+    document.cookie="Authorization=Bearer";  
   },
 };
 

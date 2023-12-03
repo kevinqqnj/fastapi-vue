@@ -51,8 +51,8 @@ async def login(user: OAuth2PasswordRequestForm = Depends()):
         httponly=True,
         max_age=1800,
         expires=1800,
-        samesite="Lax",
-        secure=False,
+        samesite="none",
+        secure=True,
     )
     return response
 
