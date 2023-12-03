@@ -42,7 +42,8 @@ const mutations = {
   },
   logout(state){
     state.user = null;
-    document.cookie="Authorization=Bearer";  
+    // document.cookie = 'Authorization="Bearer"; domain=localhost'; 
+    document.cookie = "Authorization=Bearer; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
   },
 };
 
