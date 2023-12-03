@@ -7,10 +7,12 @@ services:
     container_name: fastapi-backend
     environment:
       - DATABASE_URL=postgres://hello_fastapi:hello_fastapi@db:5432/hello_fastapi_dev
-      - SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      - SECRET_KEY=changethis
     volumes:
       - ./backend:/app
-    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+      - ../frontend/dist:/app/dist
+    # command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+    command: gunicorn --bind 127.0.0.1:8000 -k uvicorn.workers.UvicornWorker src.main:app
     ports:
       - 8000:8000
     depends_on:
