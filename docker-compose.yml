@@ -18,16 +18,17 @@ services:
     depends_on:
       - db
 
-  frontend:
-    image: app-frontend:1.00
-    build: ./frontend
-    container_name: vue-frontend
-    restart: always
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    ports:
-      - 8080:8080  # 8200:8080 publish port 8080 (inside container) as 8200 on host
+# no need frontend in Prod. server
+  # frontend:
+  #   image: app-frontend:1.00
+  #   build: ./frontend
+  #   container_name: vue-frontend
+  #   restart: always
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
+  #   ports:
+  #     - 8080:8080  # 8200:8080 publish port 8080 (inside container) as 8200 on host
 
   db:
     image: postgres:15.1
