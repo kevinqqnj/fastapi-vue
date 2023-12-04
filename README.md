@@ -19,7 +19,9 @@ Host (Windows PC) -- Connect to Remote SSH -- Ubuntu (Running in VMware/VirtualB
     -- PROS: hot reload in debug mode
     -- CONS: two steps
 
-
+### Demo site
+https://baozhong.store/fastapi/
+Note: the fastapi App is mounted at sub-directory of this site (/fastapi).
 
 ### Want to learn how to build this?
 
