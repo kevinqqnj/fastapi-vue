@@ -3,6 +3,7 @@
     <p><strong>Title:</strong> {{ note.title }}</p>
     <p><strong>Content:</strong> {{ note.content }}</p>
     <p><strong>Author:</strong> {{ note.author.username }}</p>
+    <p><strong>Update in:</strong> {{ note.modified_at }}</p>
 
     <div v-if="user.id === note.author.id">
       <p><router-link :to="{name: 'EditNote', params:{id: note.id}}" class="btn btn-primary">Edit</router-link></p>

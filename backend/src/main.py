@@ -5,7 +5,10 @@ from fastapi.staticfiles import StaticFiles
 
 from src.database.register import register_tortoise
 from src.database.config import TORTOISE_ORM
+import logging
+logger = logging.getLogger(__name__)
 
+import os
 
 # enable schemas to read relationship between models
 Tortoise.init_models(["src.database.models"], "models")
@@ -28,13 +31,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.include_router(users.router)
-app.include_router(notes.router)
-app.mount('/', StaticFiles(directory='dist', html=True))
+
+path_prefix = '' if os.getenv('FASTAPI_DEV')=='1' else '/fastapi'
+app.include_router(users.router, prefix=path_prefix)
+app.include_router(notes.router, prefix=path_prefix)
+app.mount(f"{'/' if path_prefix=='' else path_prefix}",          
+          StaticFiles(directory=f'dist{path_prefix}', html=True),
+          name='static Index.html')
 
 register_tortoise(app, config=TORTOISE_ORM, generate_schemas=False)
+logger.info(f'app started, {path_prefix=}')
+logger.debug(f'{[{route.name: route.path} for route in app.routes]}')
 
-
-# @app.get("/")
-# def home(request: Request):
-#     return "Hello, World!"
+@app.get("/")
+def home(request: Request):
+    return "Hello, World!"

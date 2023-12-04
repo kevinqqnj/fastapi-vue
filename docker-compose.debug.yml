@@ -8,10 +8,12 @@ services:
     environment:
       - DATABASE_URL=postgres://hello_fastapi:hello_fastapi@db:5432/hello_fastapi_dev
       - SECRET_KEY=changethis
+      - FASTAPI_DEV=1
+      - PYDEVD_DISABLE_FILE_VALIDATION=1
     volumes:
       - ./backend:/app
       - ./frontend/dist:/app/dist
-    command: sh -c "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 -m uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload"
+    command: sh -c "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 -m uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload --log-config=log_config.yml"
     ports:
       - 8000:8000
       - 5678:5678

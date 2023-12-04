@@ -20,6 +20,7 @@ RUN python -m pip install -r requirements.txt
 COPY src /app
 COPY migrations .
 COPY pyproject.toml .
+COPY log_config.yml .
 # dist HTML from frontend
 # RUN mkdir dist
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder

@@ -19,7 +19,7 @@
                     "remoteRoot": "/app"
                 }
             ],
-            "justMyCode": true
+            "justMyCode": false
         },
         {
             "name": "Docker: Python - Fastapi",
