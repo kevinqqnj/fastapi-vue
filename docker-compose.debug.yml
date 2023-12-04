@@ -6,7 +6,7 @@ services:
     build: ./backend
     container_name: fastapi-backend-debug
     environment:
-      - DATABASE_URL=postgres://hello_fastapi:hello_fastapi@db:5432/hello_fastapi_dev
+      - DATABASE_URL=postgres://hello_fastapi_dev:hello_fastapi_dev@db:5432/hello_fastapi_dev
       - SECRET_KEY=changethis
       - FASTAPI_DEV=1
       - PYDEVD_DISABLE_FILE_VALIDATION=1
@@ -33,16 +33,14 @@ services:
 
   db:
     image: postgres:15.1
-    expose:
-      - 5432
     environment:
-      - POSTGRES_USER=hello_fastapi
-      - POSTGRES_PASSWORD=hello_fastapi
+      - POSTGRES_USER=hello_fastapi_dev
+      - POSTGRES_PASSWORD=hello_fastapi_dev
       - POSTGRES_DB=hello_fastapi_dev
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
-      - 54320:5432
+      - 5432:5432
 
 volumes:
   postgres_data:  
