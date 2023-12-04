@@ -7,7 +7,7 @@ services:
     container_name: fastapi-backend
     environment:
       - DATABASE_URL=${DATABASE_URL:-postgres://hello_fastapi:hello_fastapi@db:5432/hello_fastapi_dev}
-      - SECRET_KEY=
+      - SECRET_KEY
     volumes:
       - ./backend:/app
       - ./frontend/dist:/app/dist
@@ -29,7 +29,7 @@ services:
       - 5432
     environment:
       - POSTGRES_USER=hello_fastapi
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD
       - POSTGRES_DB=hello_fastapi
     volumes:
       - postgres_data:/var/lib/postgresql/data/
