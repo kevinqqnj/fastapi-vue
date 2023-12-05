@@ -23,5 +23,8 @@ export default defineComponent({
       return this.$store.getters.isAuthenticated;
     }
   },
+  mounted() {
+    console.log(this.$store.getters.isAuthenticated)
+  }
 });
 </script>

@@ -16,6 +16,7 @@ axios.interceptors.response.use(undefined, function (error) {
   if (error) {
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
+      console.log(error.response)
       originalRequest._retry = true;
       store.dispatch('logOut');
       return router.push('/login')
