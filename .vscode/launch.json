@@ -10,7 +10,7 @@
             "type": "python",
             "request": "attach",
             "connect": {
-                "host": "192.168.62.111",
+                "host": "localhost",
                 "port": 5678
             },
             "pathMappings": [
