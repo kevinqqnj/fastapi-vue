@@ -32,7 +32,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-path_prefix = '' if os.getenv('FASTAPI_DEV')=='1' else '/fastapi'
+path_prefix = '' if os.getenv('FASTAPI_MOUNT_DIR')=='root' else '/fastapi'
 app.include_router(users.router, prefix=path_prefix)
 app.include_router(notes.router, prefix=path_prefix)
 app.mount(f"{'/' if path_prefix=='' else path_prefix}",          

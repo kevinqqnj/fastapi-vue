@@ -8,7 +8,7 @@ services:
     environment:
       - DATABASE_URL=postgres://hello_fastapi_dev:hello_fastapi_dev@db:5432/hello_fastapi_dev
       - SECRET_KEY=changethis
-      - FASTAPI_DEV=1
+      - FASTAPI_MOUNT_DIR=root # mount web app to host root dir or sub-dir
       - PYDEVD_DISABLE_FILE_VALIDATION=1
     volumes:
       - ./backend:/app

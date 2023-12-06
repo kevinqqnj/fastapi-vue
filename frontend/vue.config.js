@@ -1,8 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
-  outputDir: process.env.NODE_ENV==='production'? "dist/fastapi" : 'dist',
-  publicPath: process.env.NODE_ENV==='production'? '/fastapi/' : '',
+  // outputDir: process.env.NODE_ENV==='production'? "dist/fastapi" : 'dist',
+  // publicPath: process.env.NODE_ENV==='production'? '/fastapi/' : '',
   productionSourceMap: process.env.NODE_ENV==='production' ? false : true,
   devServer: {
     proxy: 'http://localhost:8000/'
